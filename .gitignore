@@ -1,32 +1,61 @@
-# Prerequisites
-*.d
+# Игнорировать файлы резервных копий Visual Studio Code
+.vscode/
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Игнорировать файлы настроек решения Visual Studio
+*.sln.cache
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-# Precompiled Headers
-*.gch
-*.pch
+# Игнорировать файлы временных данных
+[Tt]emp/
+[Vv]isual[Ss]tudio[Dd]ata/
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# Игнорировать файлы настроек Resharper
+*.resharper
+*.resharper.user
 
-# Fortran module files
-*.mod
-*.smod
+# Игнорировать файлы и папки сборки .NET Core
+bin/
+obj/
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# Игнорировать папку пакетов NuGet
+packages/
 
-# Executables
-*.exe
-*.out
-*.app
+# Игнорировать файлы отладки
+*.pdb
+
+# Игнорировать файлы с кэшем или локализации
+*.cache
+*.log
+*.localized
+
+# Игнорировать временные файлы
+*.log
+*.logs
+*.bak
+*.lock
+*.tmp
+
+# Игнорировать файлы локализации
+*.pot
+*.po
+*.mo
+
+# Игнорировать файлы отчётов о покрытии кода
+*.coverage
+*.coveragexml
+*.dotCover
+*.opencover
+
+# Игнорировать файлы профилирования
+*.vsp
+*.vspx
+*.sap
+*.ipch
+
+# Игнорировать файлы публикации
+*.pubxml
+*.publishsettings
+node_modules/
