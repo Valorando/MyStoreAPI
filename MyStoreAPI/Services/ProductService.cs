@@ -16,9 +16,33 @@ namespace MyStoreAPI.Services
             _sqlQueries = sqlQueries;
         }
 
-        public Task<List<ProductModel>> GetAllProducts()
+        public async Task<List<ProductModel>> GetAllProducts()
         {
-            throw new NotImplementedException();
+            var products = new List<ProductModel>();
+
+            using (var connection = new MySqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                var query = _sqlQueries["GetAllProducts"];
+
+                using (var command = new MySqlCommand(query, connection))
+                using (var reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        var product = new ProductModel
+                        {
+                            ProductId = reader.GetInt32("ProductId"),
+                            Name = reader.GetString("Name"),
+                            Amount = reader.GetInt32("Amount"),
+                            Price = reader.GetString("Price")
+                        };
+                        products.Add(product);
+                    }
+                }
+            }
+
+            return products;
         }
     }
 }
