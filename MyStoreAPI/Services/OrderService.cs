@@ -1,7 +1,6 @@
-﻿
+﻿using MySql.Data;
 using MyStoreAPI.Models;
 using MyStoreAPI.Interfaces;
-using MySql.Data.MySqlClient;
 
 namespace MyStoreAPI.Services
 {
@@ -18,22 +17,7 @@ namespace MyStoreAPI.Services
 
         public async Task AddOrder(OrderModel orderModel)
         {
-            using(var connection = new MySqlConnection(_connectionString))
-            {
-                await connection.OpenAsync();
-                var query = _sqlQueries["AddOrder"];
-
-                using (var command = new MySqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@orderid", orderModel.OrderId);
-                    command.Parameters.AddWithValue("@orderdate", orderModel.OrderDate);
-                    command.Parameters.AddWithValue("@firstname", orderModel.FirstName);
-                    command.Parameters.AddWithValue("@secondname", orderModel.SecondName);
-                    command.Parameters.AddWithValue("@productname", orderModel.ProductName);
-                    command.Parameters.AddWithValue("@amount", orderModel.Amount);
-                    await command.ExecuteNonQueryAsync();
-                }
-            }
+            throw new NotImplementedException();
         }
     }
 }
