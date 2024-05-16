@@ -6,6 +6,7 @@
         public string OrderDate { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
+        public string PhoneNumber { get; set; }
         public string ProductName { get; set; }
         public int Amount { get; set; }
     }
