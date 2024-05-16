@@ -14,6 +14,7 @@ foreach (var request in requestsSection.GetChildren())
 
 // Add services to the container.
 builder.Services.AddScoped<IProductService, ProductService>(provider => new ProductService(connectionString, sqlRequests));
+builder.Services.AddScoped<IOrderService, OrderService>(provider => new OrderService(connectionString, sqlRequests));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
