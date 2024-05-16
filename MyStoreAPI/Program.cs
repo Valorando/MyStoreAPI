@@ -1,5 +1,7 @@
 using MyStoreAPI.Services;
 using MyStoreAPI.Interfaces;
+using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -11,6 +13,15 @@ foreach (var request in requestsSection.GetChildren())
 {
     sqlRequests[request.Key] = request.Value;
 }
+
+builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>
+{
+    loggerConfiguration
+        .MinimumLevel.Information()
+        .WriteTo.Console()
+        .WriteTo.File("Logs\\log.txt", rollingInterval: RollingInterval.Day);
+});
+
 
 // Add services to the container.
 builder.Services.AddScoped<IProductService, ProductService>(provider => new ProductService(connectionString, sqlRequests));
